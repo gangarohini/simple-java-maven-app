@@ -1,0 +1,25 @@
+name: Build Simple Java App with Maven
+
+'on':
+  push: 
+    branches: [ "master" ]
+jobs:
+    build:
+      name: Build a Java application with Maven
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checking out the code
+        - uses: actions/checkout@v4
+        
+        - name: Setup JDK 17 for x64
+          uses: actions/setup-java@v3
+          with: 
+            distribution: 'corretto'
+            java-version: '17' 
+            cache : maven
+          
+        - name: Unit Test using Maven
+          run: mvn -B test --file pom.xml
+
+        - name: Print if Build is a success
+          run: echo "First workflow succeded"
