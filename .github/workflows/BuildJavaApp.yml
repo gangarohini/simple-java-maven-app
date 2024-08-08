@@ -11,7 +11,10 @@ jobs:
       steps:
         - name: Checking out the code
           uses: actions/checkout@v4
-        
+          
+        - name: Use local hello-world-action
+          uses: ./.github/actions/hello-world
+          
         - name: Setup JDK 17 for x6
           uses: actions/setup-java@v3
           with: 
